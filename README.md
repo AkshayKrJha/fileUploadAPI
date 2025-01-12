@@ -1,4 +1,4 @@
-### File Upload API    
+### File Upload API - store in mongoDB with gridFS    
 
 Start nodeJS server and mongoDB server    
 
