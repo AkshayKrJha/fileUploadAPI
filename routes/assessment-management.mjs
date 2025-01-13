@@ -1,7 +1,7 @@
 import express from "express";
 import { Mongoose } from "mongoose";
-import { mongooseDB } from "./database/db.cjs";
-import { bucketUpload } from "./middleware.mjs";
+import { mongooseDB } from "../database/db.cjs";
+import { bucketUpload } from "../middleware.mjs";
 const assessmentRouter = express.Router();
 
 assessmentRouter.post(

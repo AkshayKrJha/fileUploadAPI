@@ -1,11 +1,11 @@
 import bp from "body-parser";
 import dotenv from "dotenv";
 import express from "express";
-import assessmentRouter from "./assessment-management.mjs";
-import audioComicsRouter from "./audio-comics-management.mjs";
-import ComicsRouter from "./comics-management.mjs";
+import assessmentRouter from "./routes/assessment-management.mjs";
+import audioComicsRouter from "./routes/audio-comics-management.mjs";
+import ComicsRouter from "./routes/comics-management.mjs";
 import { dbConnection } from "./database/db.cjs";
-import podcastRouter from "./podcast-management.mjs";
+import podcastRouter from "./routes/podcast-management.mjs";
 const app = express();
 dotenv.config();
 const port = process.env.PORT;
