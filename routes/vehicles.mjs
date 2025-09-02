@@ -1,9 +1,11 @@
 import {Router} from "express";
 import { vehicleRequestValidator } from "../middlewares/vehicleMiddleware.mjs";
+import { addVehicle } from "../functions/addVehicle.mjs";
+import { getAvailableVehicles } from "../functions/getAvailableVehicles.mjs";
 
 const vehiclesRouter = Router();
 
-vehiclesRouter.post("/", vehicleRequestValidator, async (req, res) => {
-});
+vehiclesRouter.post("/", vehicleRequestValidator, addVehicle);
+vehiclesRouter.get("/available", getAvailableVehicles);
 
-// post route to add a new vehicle
+export default vehiclesRouter

@@ -9,6 +9,6 @@ export async function addVehicle(req, res) {
         await vehicle.save();
         res.status(201).json({message: 'Vehicle added successfully', vehicle});
     }catch(e){
-        res.status(500).json({error: 'Internal server error'});
+        res.status(500).json({error: 'Internal server error', message: e.message});
     }
 }

@@ -6,6 +6,8 @@ import audioComicsRouter from "./routes/audio-comics-management.mjs";
 import ComicsRouter from "./routes/comics-management.mjs";
 import { dbConnection } from "./database/db.cjs";
 import podcastRouter from "./routes/podcast-management.mjs";
+import vehiclesRouter from "./routes/vehicles.mjs";
+import bookingsRouter from "./routes/bookings.mjs";
 const app = express();
 dotenv.config();
 const port = process.env.PORT;
@@ -16,10 +18,13 @@ app.use(bp.urlencoded({ extended: true }));
 // start connection
 dbConnection();
 
-app.use("/api/audioComics", audioComicsRouter);
-app.use("/api/comics", ComicsRouter);
-app.use("/api/podcast", podcastRouter);
-app.use("/api/assessment", assessmentRouter);
+// app.use("/api/audioComics", audioComicsRouter);
+// app.use("/api/comics", ComicsRouter);
+// app.use("/api/podcast", podcastRouter);
+// app.use("/api/assessment", assessmentRouter);
+
+app.use("/api/vehicles/", vehiclesRouter);
+app.use("/api/bookings/", bookingsRouter);
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
