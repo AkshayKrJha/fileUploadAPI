@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import MyCustomStorage from "./storage-engine.cjs";
+import MyCustomStorage from "../storage-engine.cjs";
 import multer from "multer";
 
 export function bucketUpload(bucketName, type) {

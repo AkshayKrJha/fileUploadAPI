@@ -1,7 +1,7 @@
 import express from "express";
 import { Mongoose } from "mongoose";
 import { mongooseDB } from "../database/db.cjs";
-import { bucketUpload } from "../middleware.mjs";
+import { bucketUpload } from "../middlewares/middleware.mjs";
 const comicsRouter = express.Router();
 
 comicsRouter.post("/", bucketUpload("comics", "comics"), async (req, res) => {
