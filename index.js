@@ -10,13 +10,13 @@ import vehiclesRouter from "./routes/vehicles.mjs";
 import bookingsRouter from "./routes/bookings.mjs";
 const app = express();
 dotenv.config();
-const port = process.env.PORT;
+// const port = process.env.PORT;
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 // app.use()
 
 // start connection
-dbConnection();
+// dbConnection();
 
 // app.use("/api/audioComics", audioComicsRouter);
 // app.use("/api/comics", ComicsRouter);
@@ -26,6 +26,22 @@ dbConnection();
 app.use("/api/vehicles/", vehiclesRouter);
 app.use("/api/bookings/", bookingsRouter);
 
-app.listen(port, () => {
-  console.log(`Server started on port ${port}`);
-});
+// Database connection and server start
+// const startServer = async () => {
+//   const port = process.env.PORT || 3000;
+//   try {
+//     // Start the database connection
+//     dbConnection();
+//     // Start the server
+//     app.listen(port, () => {
+//       console.log(`Server started on port ${port}`);
+//     });
+//   } catch (err) {
+//     console.error("Failed to start server:", err.message);
+//     process.exit(1);
+//   }
+// };
+
+// startServer();
+
+export default app;

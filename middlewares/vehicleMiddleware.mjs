@@ -8,7 +8,10 @@ export function vehicleRequestValidator(req, res, next) {
     if (typeof capacityKg!== 'number' || capacityKg <= 0) {
         return res.status(400).json({error: 'Invalid or missing capacity'});
     }
-    if (!Array.isArray(tyres) || tyres.length === 0 || !tyres.every(t => typeof t === 'string' && t.trim() !== '')) {
+    // if (!Array.isArray(tyres) || tyres.length === 0 || !tyres.every(t => typeof t === 'string' && t.trim() !== '')) {
+    //     return res.status(400).json({error: 'Invalid or missing tyres'});
+    // }
+    if (typeof tyres!== 'number' || tyres <= 0) {
         return res.status(400).json({error: 'Invalid or missing tyres'});
     }
     next();
