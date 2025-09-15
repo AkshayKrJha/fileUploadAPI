@@ -11,7 +11,7 @@ estimatedRideDurationHours.
 24 to keep it within a day - treat this as hours).
  */
 
-import Booking from "../models/Booking.mjs";
+import { Booking } from "../models/Booking.mjs";
 
 export function estimatedRideDurationHours(fromPincode, toPincode) {
   return Math.abs(parseInt(toPincode) - parseInt(fromPincode)) % 24;
@@ -31,7 +31,7 @@ export function calculateBookingEndTime(fromPincode, toPincode, startTime) {
 export async function isBookingAvailable(startTime, bookingEndTime) {
   const start = new Date(startTime);
   const end = new Date(bookingEndTime);
-  const bookings = await Booking.findOne({
+  const booking = await Booking.findOne({
     $or: [
       {
         startTime: { $lt: end, $gte: start },
@@ -42,7 +42,7 @@ export async function isBookingAvailable(startTime, bookingEndTime) {
       { startTime: { $lte: start }, bookingEndTime: { $gte: end } },
     ],
   });
-  return bookings.length === 0;
+  return !booking;
 }
 
 /**

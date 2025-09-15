@@ -37,6 +37,6 @@ export async function getAvailableVehicles(req, res) {
       .filter((v) => v.capacityKg >= capacityRequired);
     res.status(200).json({ availableVehicles });
   } catch (e) {
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: e?.message || "Internal server error" });
   }
 }

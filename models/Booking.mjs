@@ -21,4 +21,4 @@ const bookingSchema = new mongoose.Schema({
     customerId: {type: String, required: true}
 });
 
-export default mongoose.model('Booking', bookingSchema);
+export const Booking = mongoose.model('Booking', bookingSchema);

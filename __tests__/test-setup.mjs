@@ -6,8 +6,15 @@ import mongoose from 'mongoose';
 
 // Variables for the in-memory server and connection
 let mongoServer;
-let connection;
+export let connection;
 
+// This hook runs after EACH test file has finished.
+// beforeEach(async () => {
+// before(async () => {
+//   if (connection && connection.dropDatabase) {
+//     await connection.dropDatabase();
+//   }
+// });
 // --- Mocha Lifecycle Hooks for the Database ---
 // This hook runs once before ALL tests in the entire test suite.
 before(async function () {
@@ -23,12 +30,6 @@ before(async function () {
   }
 });
 
-// This hook runs after EACH test file has finished.
-beforeEach(async () => {
-  if (connection && connection.dropDatabase) {
-    await connection.dropDatabase();
-  }
-});
 
 // This hook runs once after ALL tests have finished.
 after(async function () {
