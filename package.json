@@ -1,5 +1,5 @@
 {
-  "name": "file-upload-api",
+  "name": "fleet-link-api",
   "version": "1.0.0",
   "main": "index.js",
   "type": "module",
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AkshayKrJha/fileUploadAPI.git"
+    "url": "git+https://github.com/AkshayKrJha/fleet-link-api.git"
   },
   "author": "Akshay Kumar Jha",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AkshayKrJha/fileUploadAPI/issues"
+    "url": "https://github.com/AkshayKrJha/fleet-link-api/issues"
   },
-  "homepage": "https://github.com/AkshayKrJha/fileUploadAPI#readme",
+  "homepage": "https://github.com/AkshayKrJha/fleet-link-api#readme",
   "description": "",
   "dependencies": {
     "body-parser": "^1.20.3",
