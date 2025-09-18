@@ -49,7 +49,7 @@ export async function isBookingAvailable(startTime, bookingEndTime) {
  * another function to list all available bookings populated with vehicleId
  */
 
-export async function getAvailableBookings(startTime, bookingEndTime) {
+export async function getUnavailableBookings(startTime, bookingEndTime) {
   const start = new Date(startTime);
   const end = new Date(bookingEndTime);
   const bookings = await Booking.find({
@@ -62,6 +62,8 @@ export async function getAvailableBookings(startTime, bookingEndTime) {
       },
       { startTime: { $lte: start }, bookingEndTime: { $gte: end } },
     ],
-  }).populate('vehicleId');
-  return bookings;
+  // }).populate('vehicleId');
+  }).select('vehicleId');
+  // return bookings;
+  return bookings.map(b => b.vehicleId);
 }

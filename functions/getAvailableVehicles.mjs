@@ -17,7 +17,8 @@ booking.
 objects. Along with estimatedRideDurationHours: estimatedHours.
  */
 
-import { calculateBookingEndTime } from "./bookingManagement.mjs";
+import { Vehicle } from "../models/Vehicle.mjs";
+import { calculateBookingEndTime, getUnavailableBookings } from "./bookingManagement.mjs";
 
 export async function getAvailableVehicles(req, res) {
   const { capacityRequired, fromPincode, toPincode, startTime } = req.query;
@@ -27,16 +28,15 @@ export async function getAvailableVehicles(req, res) {
     startTime
   );
   try {
-    const bookings = await getAvailableBookings(startTime, endTime);
+    // const unavailableBookings = await getUnavailableBookings(startTime, endTime);
+    const unavailableVehicleIds = await getUnavailableBookings(startTime, endTime);
     // extract vehicleId from bookings and combine it with estimatedRideDurationHours
-    const availableVehicles = bookings
-      .map((b) => ({
-        ...b.vehicleId.toObject(),
-        estimatedRideDurationHours: b.estimatedRideDurationHours,
-      }))
-      .filter((v) => v.capacityKg >= capacityRequired);
-    res.status(200).json({ availableVehicles });
+    const suitableVehicles = await Vehicle.find({
+      capacityKg: { $gte: capacityRequired },
+      _id: { $nin: unavailableVehicleIds },
+    });
+    return res.status(200).json({ vehicles: suitableVehicles });
   } catch (e) {
-    res.status(500).json({ error: e?.message || "Internal server error" });
+    return res.status(500).json({ error: e?.message || "Internal server error" });
   }
 }

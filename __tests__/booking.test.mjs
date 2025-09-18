@@ -25,7 +25,7 @@
     vehicleId: IdOfVehicle1,
     fromPincode: '560003',
     toPincode: '560004',
-    startTime: '2023-10-10T10:30:00Z',
+    startTime: '2025-10-10T10:30:00Z',
     customerId: "someId"}
 
  * should give 201
@@ -103,7 +103,7 @@ describe("POST /api/bookings", () => {
         vehicleId: vehicle1Id,
         fromPincode: "560003",
         toPincode: "560004",
-        startTime: "2023-10-10T10:30:00Z",
+        startTime: "2025-10-10T10:30:00Z",
         customerId,
       });
       // console.log("Body:", res.body);
@@ -126,7 +126,7 @@ describe("POST /api/bookings", () => {
               vehicleId: vehicle2Id,
               fromPincode: '560005',
               toPincode: '560006',
-              startTime: '2023-10-10T10:45:00Z', // overlaps with previous booking
+              startTime: '2025-10-10T10:45:00Z', // overlaps with previous booking
               customerId
           })
           .expect(409);
@@ -139,7 +139,7 @@ describe("POST /api/bookings", () => {
               vehicleId: vehicle3Id,
               fromPincode: '560007',
               toPincode: '560010',
-              startTime: '2023-10-10T09:00:00Z',
+              startTime: '2025-10-10T09:00:00Z',
               customerId
           }).expect(409);
   });
@@ -151,7 +151,7 @@ describe("POST /api/bookings", () => {
               vehicleId: vehicle4Id,
               fromPincode: '560011',
               toPincode: '560012',
-              startTime: '2023-10-10T10:00:00Z',
+              startTime: '2025-10-10T10:00:00Z',
               customerId
           }).expect(409);
   });
@@ -163,7 +163,7 @@ describe("POST /api/bookings", () => {
               vehicleId: vehicle4Id,
               fromPincode: '560012',
               toPincode: '560013',
-              startTime: '2023-10-10T13:00:00Z',
+              startTime: '2025-10-10T13:00:00Z',
               customerId
           })
           expect(res.status).to.equal(201);
